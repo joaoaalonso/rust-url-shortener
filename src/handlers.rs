@@ -20,7 +20,9 @@ struct ResponseUrl {
 }
 
 pub async fn index() -> impl Responder {
-    HttpResponse::Ok().body("Server is up and running!")
+    HttpResponse::Ok().json(ResponseMessage {
+        message: "Server is up and running!"
+    })
 }
 
 pub async fn redirect(web::Path(id): web::Path<String>) -> impl Responder {
