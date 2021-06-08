@@ -1,0 +1,74 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    color: #6b7280;
+    align-items: center;
+    flex-direction: column;
+    font-family: helvetica;
+    box-sizing: border-box;
+    background-color: #e8e8e8;
+}
+
+.title {
+    width: 100%;
+    padding: 10px;
+    font-size: 2em;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.content {
+    width: 90%;
+    padding-top: 20px;
+}
+
+.card {
+    margin-top: 20px;
+    overflow: hidden;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+form {
+    margin: 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+form > input[type="submit"] {
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 5px;
+    align-self: flex-end;
+    background-color: #10b981;
+}
+
+form > input[type="text"] {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #bbb;
+}
+
+.results {
+    display: flex;
+}
+
+.results > div {
+    flex: 1;
+    padding: 15px;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.header {
+    font-size: 0.8em;
+    background-color: #f9fafb;
+}

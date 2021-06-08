@@ -9,16 +9,24 @@ function shortUrl(url) {
     .then(response => response.json())
 }
 
-function showResult(long, shorten) {
-    const original = document.createElement('span')
-    original.innerText = long + ' - '
-    
+function createLinkElement(url) {
     const link = document.createElement('a')
-    link.innerHTML = shorten
-    link.href = shorten
+    link.innerHTML = url
+    link.href = url
     link.target = "_blank"
+    const linkContainer = document.createElement('div')
+    linkContainer.className = 'results'
+    linkContainer.appendChild(link)
+
+    return linkContainer
+}
+
+function showResult(long, shorten) {
+    const original = createLinkElement(long)
+    const link = createLinkElement(shorten)
     
     const container = document.createElement('div')
+    container.className="results"
     container.append(original)
     container.appendChild(link)
     

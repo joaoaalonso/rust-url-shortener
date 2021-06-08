@@ -1,13 +1,28 @@
 <html>
     <head>
         <title>URL Shortener</title>
+        <link rel="stylesheet" href="/dist/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form onsubmit="handleSubmit(event)" action="/">
-            <input id="url-input" />
-            <input type="submit" value="send">
-        </form>
-        <div id="results"></div>
+        <div class="title">URL Shortener</div>
+        <div class="content">
+            <div class="card">
+                <form onsubmit="handleSubmit(event)" action="/">
+                    <span>Original URL</span>
+                    <input id="url-input" type="text" />
+                    <input type="submit" value="SHORTEN">
+                </form>
+            </div>
+            <div class="card">
+                <div id="results">
+                    <div class="results header">
+                        <div>ORIGINAL URL</div>
+                        <div>SHORTEN VERSION</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
     <script src="/dist/scripts.js"></script>
 </html>
