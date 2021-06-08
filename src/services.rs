@@ -33,3 +33,13 @@ fn id_is_available(id: &str) -> bool {
         Err(_x) => true
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_generate_randon_id() {
+        assert_ne!(generate_random_id(), "")
+    }
+}

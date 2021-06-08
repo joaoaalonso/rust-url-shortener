@@ -1,6 +1,10 @@
 use super::configs;
 use super::services;
 
+use std::borrow::Cow;
+use mime_guess::from_path;
+use rust_embed::RustEmbed;
+use actix_web::body::Body;
 use serde::{Deserialize, Serialize};
 use actix_web::{HttpResponse, Responder, web, http};
 
@@ -19,10 +23,29 @@ struct ResponseUrl {
     url: String
 }
 
-pub async fn index() -> impl Responder {
-    HttpResponse::Ok().json(ResponseMessage {
-        message: "Server is up and running!"
-    })
+#[derive(RustEmbed)]
+#[folder = "static/"]
+struct Asset;
+
+fn handle_embedded_file(path: &str) -> HttpResponse {
+  match Asset::get(path) {
+    Some(content) => {
+      let body: Body = match content {
+        Cow::Borrowed(bytes) => bytes.into(),
+        Cow::Owned(bytes) => bytes.into(),
+      };
+      HttpResponse::Ok().content_type(from_path(path).first_or_octet_stream().as_ref()).body(body)
+    }
+    None => HttpResponse::NotFound().body("404 Not Found"),
+  }
+}
+
+pub fn index() -> HttpResponse {
+  handle_embedded_file("index.html")
+}
+
+pub fn dist(path: web::Path<String>) -> HttpResponse {
+  handle_embedded_file(&path.0)
 }
 
 pub async fn redirect(web::Path(id): web::Path<String>) -> impl Responder {
